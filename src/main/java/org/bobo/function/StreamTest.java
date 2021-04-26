@@ -1,4 +1,4 @@
-package function;
+package org.bobo.function;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +8,11 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * @author huangjiangbo
+ * @date 2021-04-26 17:38
+ * @description java8中新引入的Stream类使用用例
+ */
 public class StreamTest {
 
     public List<String> strList;

@@ -1,0 +1,84 @@
+package org.bobo.algorithm;
+
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.concurrent.atomic.AtomicInteger;
+/**
+ * @author huangjiangbo
+ * @date 2021-04-26 17:38
+ * @description 堆排序（小顶堆）
+ */
+class MinHeapSort {
+
+    public static AtomicInteger count = new AtomicInteger(0);
+
+    public static void main(String[] args) {
+        System.out.println("小顶堆");
+        System.out.println("乱序情况");
+        int[] unsorted1 = {44, 54, 88, 66, 77, 976, 33, 2, 22, 5};
+        sort(unsorted1);
+        System.out.println("当n=" + unsorted1.length + "时，执行次数：" + count);
+        count = new AtomicInteger(0);
+
+        System.out.println("最好情况");
+        int[] unsorted2 = {1, 3, 4, 6, 11, 22, 33, 44, 78, 976};
+        sort(unsorted2);
+        System.out.println("当n=" + unsorted2.length + "时，执行次数：" + count);
+        count = new AtomicInteger(0);
+
+        System.out.println("第二好情况");
+        int[] unsorted3 = {1, 3, 4, 11, 22, 33, 44, 79, 78, 976};
+        sort(unsorted3);
+        System.out.println("当n=" + unsorted3.length + "时，执行次数：" + count);
+        count = new AtomicInteger(0);
+
+        System.out.println("最坏情况");
+        int[] unsorted4 = {13321, 1312, 123, 12, 10, 9, 4, 3, 2, 1};
+        sort(unsorted4);
+        System.out.println("当n=" + unsorted4.length + "时，执行次数：" + count);
+        count = new AtomicInteger(0);
+    }
+
+
+    public static void sort(int[] rows) {
+        System.out.println("第0次排完前数据：" + StringUtils.join(rows, ','));
+
+        // 初始化大顶堆
+        int length = rows.length;
+        for (int i = (length >> 1) - 1; i >= 0; i--) {
+            buildMin(rows, length, i);
+        }
+        System.out.println("初始化小顶堆：" + StringUtils.join(rows, ','));
+
+        for (; length >= 1; length--) {
+            int temp = rows[0];
+            rows[0] = rows[length - 1];
+            rows[length - 1] = temp;
+            System.out.println("第" + count.addAndGet(1) + "次排完后数据：" + StringUtils.join(rows, ','));
+            buildMin(rows, length - 1, 0);
+
+        }
+    }
+
+    public static void buildMin(int[] args, int length, int root) {
+        int left = 2 * root + 1;
+        int right = 2 * root + 2;
+        int smallest = root;
+        // 左子节点比较
+        if (left < length && args[left] < args[smallest]) {
+            smallest = left;
+        }
+        // 右子节点比较
+        if (right < length && args[right] < args[smallest]) {
+            smallest = right;
+        }
+        // 当双亲节点不为最大值时，调整顺序，然后比较被调整顺序子节点是否仍然符合大顶堆的规则
+        if (smallest != root) {
+            int temp = args[root];
+            args[root] = args[smallest];
+            args[smallest] = temp;
+            buildMin(args, length, smallest);
+        }
+
+    }
+}

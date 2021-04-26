@@ -1,4 +1,4 @@
-package function;
+package org.bobo.function;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

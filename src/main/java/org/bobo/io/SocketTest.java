@@ -1,10 +1,17 @@
+package org.bobo.io;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.*;
 
-public class aa {
+/**
+ * @author huangjiangbo
+ * @date 2021-04-26 17:38
+ * @description 我也不记得这里是测啥的
+ */
+public class SocketTest {
 
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -35,6 +42,7 @@ class IOJob implements Runnable {
         this.in = in;
     }
 
+    @Override
     public void run() {
         try {
             System.out.println("reading");
@@ -42,10 +50,8 @@ class IOJob implements Runnable {
             System.out.println("11");
         }catch (Exception e){
             System.out.println(e);
-
             if(Thread.interrupted()){
                 System.out.println("interrupted");
-
             }else{
                 System.out.println("no interrupted");
             }
