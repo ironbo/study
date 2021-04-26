@@ -1,5 +1,6 @@
 package org.bobo.algorithm;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -9,40 +10,41 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @date 2021-04-26 17:38
  * @description 快速排序
  */
+@Log4j2
 class QuickSort {
 
     public static AtomicInteger count = new AtomicInteger(0);
 
     public static void main(String[] args) {
-        System.out.println("快速排序：最好情况O(n)，最坏情况O(n2)");
+        log.info("快速排序：最好情况O(n)，最坏情况O(n2)");
 
-        System.out.println("乱序情况");
+        log.info("乱序情况");
         int[] unsorted1 = {44, 54, 88, 66, 77, 976, 33, 2, 22, 5};
-        System.out.println("第0次排完前数据：" + StringUtils.join(unsorted1, ','));
+        log.info("第0次排完前数据：" + StringUtils.join(unsorted1, ','));
         sort(unsorted1, 0, unsorted1.length - 1);
-        System.out.println("当n=" + unsorted1.length + "时，执行次数：" + count);
+        log.info("当n=" + unsorted1.length + "时，执行次数：" + count);
         count = new AtomicInteger(0);
 
-        System.out.println("最好情况");
+        log.info("最好情况");
         int[] unsorted2 = {1, 3, 4, 6, 11, 22, 33, 44, 78, 976};
-        System.out.println("第0次排完前数据：" + StringUtils.join(unsorted2, ','));
+        log.info("第0次排完前数据：" + StringUtils.join(unsorted2, ','));
         sort(unsorted2, 0, unsorted2.length - 1);
-        System.out.println("当n=" + unsorted2.length + "时，执行次数：" + count);
+        log.info("当n=" + unsorted2.length + "时，执行次数：" + count);
         count = new AtomicInteger(0);
 
-        System.out.println("第二好情况");
+        log.info("第二好情况");
         int[] unsorted3 = {1, 3, 4, 11, 22, 33, 44, 79, 78, 976};
-        System.out.println("第0次排完前数据：" + StringUtils.join(unsorted3, ','));
+        log.info("第0次排完前数据：" + StringUtils.join(unsorted3, ','));
         sort(unsorted3, 0, unsorted3.length - 1);
-        System.out.println("当n=" + unsorted3.length + "时，执行次数：" + count);
+        log.info("当n=" + unsorted3.length + "时，执行次数：" + count);
         count = new AtomicInteger(0);
 
 
-        System.out.println("最坏情况");
+        log.info("最坏情况");
         int[] unsorted4 = {13321, 1312, 123, 12, 10, 9, 4, 3, 2, 1};
-        System.out.println("第0次排完前数据：" + StringUtils.join(unsorted4, ','));
+        log.info("第0次排完前数据：" + StringUtils.join(unsorted4, ','));
         sort(unsorted4, 0, unsorted4.length - 1);
-        System.out.println("当n=" + unsorted4.length + "时，执行次数：" + count);
+        log.info("当n=" + unsorted4.length + "时，执行次数：" + count);
         count = new AtomicInteger(0);
     }
 
@@ -78,7 +80,7 @@ class QuickSort {
         }
         // 当头指针和尾指针相遇时，跳出循环，即该位置为待排元素所在位置
         args[start] = value;
-        System.out.println("第" + count.get() + "次排完后数据：" + StringUtils.join(args, ',') + "，index：" + start);
+        log.info("第" + count.get() + "次排完后数据：" + StringUtils.join(args, ',') + "，index：" + start);
         return start;
     }
 }

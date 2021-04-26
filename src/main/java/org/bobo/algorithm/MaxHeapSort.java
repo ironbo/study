@@ -1,5 +1,6 @@
 package org.bobo.algorithm;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -8,53 +9,54 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @date 2021-04-26 17:38
  * @description 堆排序（大顶堆）
  */
+@Log4j2
 class MaxHeapSort {
 
     public static AtomicInteger count = new AtomicInteger(0);
 
     public static void main(String[] args) {
-        System.out.println("大顶堆排序");
-        System.out.println("乱序情况");
+        log.info("大顶堆排序");
+        log.info("乱序情况");
         int[] unsorted1 = {44, 54, 88, 66, 77, 976, 33, 2, 22, 5};
         sort(unsorted1);
-        System.out.println("当n=" + unsorted1.length + "时，执行次数：" + count);
+        log.info("当n=" + unsorted1.length + "时，执行次数：" + count);
         count = new AtomicInteger(0);
 
-        System.out.println("最好情况");
+        log.info("最好情况");
         int[] unsorted2 = {1, 3, 4, 6, 11, 22, 33, 44, 78, 976};
         sort(unsorted2);
-        System.out.println("当n=" + unsorted2.length + "时，执行次数：" + count);
+        log.info("当n=" + unsorted2.length + "时，执行次数：" + count);
         count = new AtomicInteger(0);
 
-        System.out.println("第二好情况");
+        log.info("第二好情况");
         int[] unsorted3 = {1, 3, 4, 11, 22, 33, 44, 79, 78, 976};
         sort(unsorted3);
-        System.out.println("当n=" + unsorted3.length + "时，执行次数：" + count);
+        log.info("当n=" + unsorted3.length + "时，执行次数：" + count);
         count = new AtomicInteger(0);
 
-        System.out.println("最坏情况");
+        log.info("最坏情况");
         int[] unsorted4 = {13321, 1312, 123, 12, 10, 9, 4, 3, 2, 1};
         sort(unsorted4);
-        System.out.println("当n=" + unsorted4.length + "时，执行次数：" + count);
+        log.info("当n=" + unsorted4.length + "时，执行次数：" + count);
         count = new AtomicInteger(0);
     }
 
 
     public static void sort(int[] rows) {
-        System.out.println("第0次排完前数据：" + StringUtils.join(rows, ','));
+        log.info("第0次排完前数据：" + StringUtils.join(rows, ','));
 
         // 初始化大顶堆
         int length = rows.length;
         for (int i = (length >> 1) - 1; i >= 0; i--) {
             buildMax(rows, length, i);
         }
-        System.out.println("初始化大顶堆：" + StringUtils.join(rows, ','));
+        log.info("初始化大顶堆：" + StringUtils.join(rows, ','));
 
         for (; length >= 1; length--) {
             int temp = rows[0];
             rows[0] = rows[length - 1];
             rows[length - 1] = temp;
-            System.out.println("第" + count.addAndGet(1) + "次排完后数据：" + StringUtils.join(rows, ','));
+            log.info("第" + count.addAndGet(1) + "次排完后数据：" + StringUtils.join(rows, ','));
             buildMax(rows, length - 1, 0);
 
         }
