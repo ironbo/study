@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Log4j2
 class MaxHeapSort {
 
-    public static AtomicInteger count = new AtomicInteger(0);
+    public static  AtomicInteger count = new AtomicInteger(0);
 
     public static void main(String[] args) {
         log.info("大顶堆排序");
