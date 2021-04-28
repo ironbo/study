@@ -9,10 +9,12 @@ import org.apache.commons.lang3.StringUtils;
  * @description 冒泡排序
  */
 @Log4j2
-class BubbleSort {
+public class BubbleSort {
 
   public static void main(String[] args) {
-    log.info("冒泡排序：最好情况O(n)，最坏情况O(n2)");
+    log.info("冒泡排序：时间复杂度：最好情况O(n)，最坏情况O(n2)");
+    log.info("冒泡排序：空间复杂度：O(1)");
+    log.info("冒泡排序-稳定性：稳定");
     log.info("乱序情况");
     int[] unsorted1 = {1, 3, 4, 6, 78, 976, 3, 2, 4, 5};
     sort(unsorted1);

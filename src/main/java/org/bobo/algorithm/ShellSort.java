@@ -9,10 +9,12 @@ import org.apache.commons.lang3.StringUtils;
  * @description 希尔排序
  */
 @Log4j2
-class ShellSort {
+public class ShellSort {
 
     public static void main(String[] args) {
-        log.info("希尔排序：最好情况O(n)，最坏情况O(n2)");
+        log.info("希尔排序：时间复杂度：最好情况O(n)，最坏情况O(n2)，平均情况O(n1.3)");
+        log.info("希尔排序：空间复杂度：O(1)");
+        log.info("希尔排序-稳定性：不稳定");
         log.info("乱序情况");
         int[] unsorted1 = {1, 3, 4, 6, 78, 976, 3, 2, 4, 5};
         sort(unsorted1);
