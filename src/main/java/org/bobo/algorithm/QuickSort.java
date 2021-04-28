@@ -11,13 +11,15 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @description 快速排序
  */
 @Log4j2
-class QuickSort {
+public class QuickSort {
 
     public static AtomicInteger count = new AtomicInteger(0);
 
     public static void main(String[] args) {
-        log.info("快速排序：最好情况O(n)，最坏情况O(n2)");
 
+        log.info("快速排序：时间复杂度：最好情况O(nlog(2)(n))，最坏情况O(n2)");
+        log.info("快速排序：空间复杂度：O(nlog(2)(n))");
+        log.info("快速排序-稳定性：不稳定");
         log.info("乱序情况");
         int[] unsorted1 = {44, 54, 88, 66, 77, 976, 33, 2, 22, 5};
         log.info("第0次排完前数据：" + StringUtils.join(unsorted1, ','));

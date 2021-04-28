@@ -12,7 +12,9 @@ import org.apache.commons.lang3.StringUtils;
 public class CountingSort {
 
   public static void main(String[] args) {
-    log.info("计数排序：当输入的元素是 n 个 0到 k 之间的整数时，时间复杂度是O(n+k)，空间复杂度也是O(n+k)");
+    log.info("计数排序：时间复杂度：当输入的元素是 n 个 0到 k 之间的整数时，是O(n+k)");
+    log.info("计数排序：空间复杂度：当输入的元素是 n 个 0到 k 之间的整数时，是O(n+k)");
+    log.info("计数排序-稳定性：稳定");
     log.info("乱序情况");
     int[] unsorted1 = {1, 23, 10, 6, 22, 33, 3, 2, 4, 5};
     sortByBit(unsorted1);
