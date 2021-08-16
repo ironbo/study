@@ -18,7 +18,6 @@ import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
-import org.openjdk.jmh.runner.options.ChainedOptionsBuilder;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
@@ -40,7 +39,7 @@ public class StringConectTest {
   private int length;
 
   /**
-   * blackhole 避免jvm编译优化中的dead code消除
+   * blackhole 避免jvm编译优化中的dead code·消除
    */
   @Benchmark
   public void testStringBuild(Blackhole blackhole) {
